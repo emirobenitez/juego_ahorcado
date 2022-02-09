@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ahorcado</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div style="text-align:center; margin: 50px 0px;">
+      <h1 class="titulo">Ahorcado</h1>
+      <button class="btn" id="iniciar-juego">INICIAR JUEGO</button>
+    </div>
+
+    <div style="text-align:center">
+      <input class="text-input" type="text" id="input-nueva-palabra" placeholder="Escriba una nueva palabra">
+      <button class="btn" id="nueva-palabra">AGREGAR PALABRA</button> 
+    </div>
+
+    <div style="text-align:center;">
+      <canvas id="ahorcado" height="800px" width="1200px"></canvas>
+    </div>
+  <!-- ---------------- -->
+  <!-- Area para canvas -->
+  <!-- ---------------- -->
+
+    <canvas width="800" height="600"> </canvas>
+
+    <div class="row">
+        <div class="col text-center">
+
+            <img src="images/9.png" class="ahorcado-img">
+
+            <h3>Intentos <small> 1 / 9</small> </h3>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col text-center">
+
+            <h1 id="palabraOculta"> _ _ _ _ _ _ _   </h1>
+
+        </div>
+    </div>
+
+
+   <!-- <div class="row" *ngIf="gano">
+        <div class="col text-center">
+
+            <h1> Felicidades Ganaste!!! </h1>
+            <h4> :D </h4>
+
+        </div>
+    </div>
+
+    <div class="row" *ngIf="perdio">
+        <div class="col text-center">
+
+            <h1> Lo siento, perdiste :( </h1>
+            <h4>  palabra  </h4>
+
+        </div>
+    </div>
+    -->
+
+
+    <div class="row" *ngIf="!gano && !perdio">
+        <div class="col text-center">
+
+
+            <button (click)="comprobar letra " *ngFor="let letra of letras" class="btn btn-primary">
+            A
+            </button>
+
+
+        </div>
+    </div>
+
+
+
+
+    <!-- enlaces a javaScript -->
+    <script type="text/javascript" src="js/canvas.js"></script>
+    <script type="text/javascript" src="js/ahorcado.js"></script>
+  </body>
+</html>
