@@ -1,4 +1,31 @@
 
+body{
+  width: 800px;
+  margin: 0 auto;
+}
+h1{
+  text-align: center;
+}
+#pantalla{
+  border: groove 8px gold;
+  background: lightgreen;
+}
+#iniciar-juego{
+  background-color: red;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bolder;
+  padding: 3px;
+  border: solid 2px black;
+}
+#iniciar-juego:hover{ /* Estilo que se activa al pasar el puntero sobre el boton */
+  background-color: lightcoral;
+  font-size: 22px;
+  border: groove 4px red;
+}
+
+/* ---------------------------- */
 .titulo {
   padding: 15px;
   width: 30vw;
@@ -50,4 +77,45 @@ button#letras{
   margin: 5px !important;
   padding: 5px !important;
   border: solid 1px red;
+}
+
+/* ---------------------------- */
+/*    Estilos de la tabla       */
+/* ---------------------------- */
+
+section h2{
+  font-size: 3em;
+  display: block;
+  padding-bottom: .5em;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: .5em;
+}
+table{
+  width: 100%;
+  margin-bottom : .5em;
+    table-layout: fixed;
+
+}
+
+td, th {
+  padding: .7em;
+  margin: 0;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+th{
+  font-weight: bold;
+  background-color: #EEE;
+}
+ input{
+  margin: 20px 0px;
+}
+small#intentos {
+  font-size: 29px;
+  color: #FF0000;
+}
+#h3-intentos {
+  font-size: 29px;
+
 }

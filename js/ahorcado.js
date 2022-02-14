@@ -1,221 +1,273 @@
-var btnInicio = document.querySelector('#iniciar-juego');
+/* --------------------------------------------- */
+// AREA DE VARIABLES
+/* --------------------------------------------- */
+var ctx;
+var letra = '';
+var palabra = 'AGUACATE';
+var letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+var colorTecla = "#585858";
+var colorMargen = "red";
+
+var palabraOculta = '';
+var inicioX = 200;
+var inicioY = 300;
+var lon = 35;
+var margen = 20;
+var pistaText = "";
+
+var intentos = 0;
+var gano = false;
+var perdio = false;
+
+/* --------------------------------------------- */
+/* Arreglos */
+/* --------------------------------------------- */
+var teclas_array = new Array();
+var letras_array = new Array();
+var palabras_array = new Array();
+
+/* Variables de control */
+var aciertos = 0;
+var errores = 0;
+
+/* --------------------------------------------- */
+
+
 //console.log('boton btnInicio:'+ btnInicio);
 
-var btnLetras = document.querySelector('#letras');
+//var btnLetras = document.querySelector('#letras');
 //console.log('boton letras:'+ btnLetras);
 
-const div = document.createElement("div");
+//const div = document.createElement("div");
+/* --------------------------------------------- */
 
-var palabra = document.getElementById('#btnInicio');
-
-//var puntos = document.getElementByClassName(puntos)
-
-letra = '';
-palabra = 'AGUACATE';
-palabraOculta = '';
-palabraOculta = '_ '.repeat(palabra.length);
-//console.log(palabraOculta);
-
-letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-            'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S',
-            'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
-btnInicio.addEventListener("click",function(event){
-    event.preventDefault();
-
-    document.getElementById("palabraOculta").innerHTML = palabraOculta;
-    //console.log(palabraOculta);
+var btnIniciaJugar = document.querySelector('#iniciar-juego');
 
 
-   // Comprobar letra
-   function comprobar(letra){
-      const palabraOcultaARR = palabraOculta.split(' ');
-      //let palabraOcultaARR = palabraOculta.split(',');
-   }
-    //console.log(comprobar(palabraOculta));
-
-/*
-btnLetras.addEventListener("click",function(event){
-    event.preventDefault();
-*/
-  function mostrarLetras(letras) {
-    for (var i = 0; i < letras.length; i++) {
-      console.log(i.value);
-      //document.querySelector("#letras").innerHTML = div.textContent. = letras;
-      //btnLetras.innerHTML = letras.sort().join(" ");
-      const node = document.createElement("div");
-      const textnode = document.createTextNode(letras[i]);
-      node.appendChild(textnode);
-      document.getElementById("letras").appendChild(node);
-
-      for (var x = 0; x < palabra.length; x++) {
-      if (palabra[x] == letra) {
-         cadena += letra + " "
-         flag = true
-      } else
-         cadena += letrasCadena[x] + " "
-   }
-
-      //document.getElementsByClassName("letras")[i] = letras;
-      //letra = document.getElementById(letras[i]).repeat(letras[i]);
-
-    }
-
-
-}
-    //console.log(mostrarLetras(letras));
-    mostrarLetras(letras);
-    console.log(letras);
-
-
-/*
-const fragment = document.createDocumentFragment();
-
-function mostrarLetras(letras) {
-
-      for (let i = 0; i < letras.length; i++) {
-        const div = document.createElement("div");
-        div.textContent = `${letras[i]}`;
-        fragment.appendChild(div);
-
-      }
-
-      document.body.appendChild(fragment);
-}
-mostrarLetras(letras);
-
-*/
-
-
-
-/*
-function myFunction(letras) {
-  for (let i = 0; i < letras.length; i++) {
-    const node = document.createElement("div");
-    const textnode = document.createTextNode(`${letras[i]}`);
-    node.appendChild(textnode);
-
-    document.getElementById("letras").appendChild(node);
-  }
-}
-myFunction(letras);
-*/
-
-/*
-function myButtom(letras) {
-    const node = document.createElement("div");
-    const textnode = document.createTextNode(letras);
-    node.appendChild(textnode);
-    document.getElementById("letras").appendChild(node);
-}
-console.log(myButtom);
-*/
-
-
-/*
-//function mostrarLetras(letras) {
-
-letras.forEach(function(elemento, indice, array) {
-  //btnLetras.innerHTML = elemento;
-  // btnLetras.letras.value = elemento;
-  // btnLetras = document.createElement(elemento);
-  // btnLetras.classList.add(letras);
-
-  //console.log(elemento);
-//})//
-
-
-    /*
-       document.querySelector("#letras").innerHTML =
-          letras.sort().join(" ");
-          for (var i = 0; i < letras.length; i++) btnInicio += letras[i];
-              document.getElementById(letras).innerHTML = letras;
-
-    }
-
-
-     //console.log(mostrarLetras(letras));
-     mostrarLetras(letras);
-*/
-//document.body.innerHTML = "";
-//document.getElementById(id).innerHTML = nuevo HTML
-//paciente.classList.add("paciente-incorrecto");
+btnIniciaJugar.addEventListener("click",function(event){
+   event.preventDefault();
 
 });
+/* --------------------------------------------- */
+/* Objetos */
+/* --------------------------------------------- */
+function Tecla(x, y, ancho, alto, letra){
+  this.x = x;
+  this.y = y;
+  this.ancho = ancho;
+  this.alto = alto;
+  this.letra = letra;
+  this.dibuja = dibujaTecla;
+}
+
+function Letra(x, y, ancho, alto, letra){
+  this.x = x;
+  this.y = y;
+  this.ancho = ancho;
+  this.alto = alto;
+  this.letra = letra;
+  this.dibuja = dibujaCajaLetra;
+  this.dibujaLetra = dibujaLetraLetra;
+}
 
 
-    intentos = 0;
+/* --------------------------------------------- */
+/* Funciones */
+/* --------------------------------------------- */
 
-    gano = false;
-    perdio = false;
+/* Dibujar Teclas*/
+function dibujaTecla(){
+  ctx.fillStyle = colorTecla;
+  ctx.strokeStyle = colorMargen;
+  ctx.fillRect(this.x, this.y, this.ancho, this.alto);
+  ctx.strokeRect(this.x, this.y, this.ancho, this.alto);
 
+  ctx.fillStyle = "white";
+  ctx.font = "bold 20px courier";
+  ctx.fillText(this.letra, this.x+this.ancho/2-5, this.y+this.alto/2+5);
+}
 
-
-
-  // busco colocar la cantida de _ igual que palabra oculta
- /*  function rplPalabraOculta(palabra){
-      return palabraOculta='_'.repeat(palabra.length);
-  }
-  // console.log(rplPalabraOculta(palabra));
-*/
-
-
-    /*
-        constructor() {
-          this.palabraOculta = '_ '.repeat( this.palabra.length );
-
-        }
-
-        comprobar( letra ) {
-
-          this.existeLetra(letra);
-
-          const palabraOcultaArr = this.palabraOculta.split(' ');
-
-          for ( let i = 0; i < this.palabra.length; i ++ ) {
-
-            if ( this.palabra[i] === letra ) {
-              palabraOcultaArr[i] = letra;
-            }
-
-          }
-
-          this.palabraOculta = palabraOcultaArr.join(' ');
-          this.verificaGane();
-
-        }
-
-        verificaGane() {
-
-          const palabraArr = this.palabraOculta.split(' ');
-          const palabraEvaluar = palabraArr.join('');
-
-          if ( palabraEvaluar === this.palabra ) {
-            this.gano = true;
-            console.log('Usuario GANO');
-          }
-
-          if ( this.intentos >= 9 ) {
-            this.perdio = true;
-            console.log('Usuario perdio');
-          }
-
-        }
+/* Dibua la letra y su caja */
+function dibujaLetraLetra(){
+  var w = this.ancho;
+  var h = this.alto;
+  ctx.fillStyle = "black";
+  ctx.font = "bold 40px Courier";
+  ctx.fillText(this.letra, this.x+w/2-12, this.y+h/2+14);
+}
+function dibujaCajaLetra(){
+  ctx.fillStyle = "white";
+  ctx.strokeStyle = "black";
+  ctx.fillRect(this.x, this.y, this.ancho, this.alto);
+  ctx.strokeRect(this.x, this.y, this.ancho, this.alto);
+}
 
 
-        existeLetra( letra ) {
-
-          if ( this.palabra.indexOf( letra ) >= 0  ) {
-            // console.log('Letra existe ' + letra );
-          } else {
-            // console.log('Letra NO existe ' + letra );
-            this.intentos ++;
-          }
-
-        }
-
+/* Distribuir nuestro teclado con sus letras respectivas al acomodo de nuestro array */
+function teclado(){
+  var ren = 0;
+  var col = 0;
+  var letra = "";
+  var miLetra;
+  var x = inicioX;
+  var y = inicioY;
+  for(var i = 0; i < letras.length; i++){
+    letra = letras.substr(i,1);
+    miLetra = new Tecla(x, y, lon, lon, letra);
+    miLetra.dibuja();
+    teclas_array.push(miLetra);
+    x += lon + margen;
+    col++;
+    if(col==10){
+      col = 0;
+      ren++;
+      if(ren==2){
+        x = 280;
+      } else {
+        x = inicioX;
       }
+    }
+    y = inicioY + ren * 50;
+  }
+}
 
+
+
+/* aqui obtenemos nuestra palabra aleatoriamente y la dividimos en letras */
+function pintaPalabra(){
+  //var p = Math.floor(Math.random()*palabras_array.length);
+  //palabra = palabras_array[p];
+
+  //pistaFunction(palabra);
+    var w = canvas.width;
+    var len = palabra.length;
+    var ren = 0;
+    var col = 0;
+    var y = 230;
+    var lon = 50;
+    var x = (w - (lon+margen) *len)/2;
+    for(var i=0; i<palabra.length; i++){
+      letra = palabra.substr(i,1);
+      miLetra = new Letra(x, y, lon, lon, letra);
+      miLetra.dibuja();
+      letras_array.push(miLetra);
+      x += lon + margen;
+    }
+}
+/* dibujar cadalzo y partes del pj segun sea el caso */
+function horca(errores){
+  var imagen = new Image();
+  imagen.src = "images/ahorcado"+errores+".png";
+  //imagen.src = "/images/0+errores+.png";
+  imagen.onload = function(){
+    ctx.drawImage(imagen, 390, 0, 230, 230);
+  }
+//console.log(horca(errores));
+
+
+  var intentos = document.querySelector("#intentos");
+  intentos.innerHTML = errores + ' / 9';
+
+//document.getElementById('intentos').style.color = "#FF0000"
+/*
+function estilosIntentos (){
+  var stylEintentos = document.getElementById("intentos")
+  stylEintentos.style.color = "#FF0000";
+  stylEintentos.style.font.size = "50px";
+}
+estilosIntentos();
 */
+  /*************************************************
+  // Imagen 2 mas pequeña a un lado de la horca //
+  var imagen = new Image();
+  imagen.src = "imagenes/ahorcado"+errores+".png";
+  imagen.onload = function(){
+    ctx.drawImage(imagen, 620, 0, 100, 100);
+  }
+  *************************************************/
+}
+/* ajustar coordenadas */
+function ajusta(xx, yy){
+  var posCanvas = canvas.getBoundingClientRect();
+  var x = xx-posCanvas.left;
+  var y = yy-posCanvas.top;
+  return{x:x, y:y}
+}
 
-    //
+
+/* Detecta tecla clickeada y la compara con las de la palabra ya elegida al azar */
+function selecciona(e){
+  var pos = ajusta(e.clientX, e.clientY);
+  var x = pos.x;
+  var y = pos.y;
+  var tecla;
+  var bandera = false;
+  for (var i = 0; i < teclas_array.length; i++){
+    tecla = teclas_array[i];
+    if (tecla.x > 0){
+      if ((x > tecla.x) && (x < tecla.x + tecla.ancho) && (y > tecla.y) && (y < tecla.y + tecla.alto)){
+        break;
+      }
+    }
+  }
+  if (i < teclas_array.length){
+    for (var i = 0 ; i < palabra.length ; i++){
+      letra = palabra.substr(i, 1);
+      if (letra == tecla.letra){ /* comparamos y vemos si acerto la letra */
+        caja = letras_array[i];
+        caja.dibujaLetra();
+        aciertos++;
+        bandera = true;
+      }
+    }
+    if (bandera == false){ /* Si falla aumenta los errores y checa si perdio para mandar a la funcion gameover */
+      errores++;
+      horca(errores);
+      if (errores === 9) gameOver(errores);
+    }
+    /* Borra la tecla que se a presionado */
+    ctx.clearRect(tecla.x - 1, tecla.y - 1, tecla.ancho + 2, tecla.alto + 2);
+    tecla.x - 1;
+    /* checa si se gano y manda a la funcion gameover */
+    if (aciertos == palabra.length) gameOver(errores);
+  }
+}
+
+/* Borramos las teclas y la palabra con sus cajas y mandamos msj segun el caso si se gano o se perdio */
+function gameOver(errores){
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "black";
+
+  ctx.font = "bold 50px Courier";
+  if (errores < 5){
+    ctx.fillText("Muy bien, la palabra es: ", 110, 280);
+  } else {
+    ctx.fillText("Lo sentimos, la palabra era: ", 110, 280);
+  }
+
+  ctx.font = "bold 80px Courier";
+  lon = (canvas.width - (palabra.length*48))/2;
+  ctx.fillText(palabra, lon, 380);
+  horca(errores);
+}
+
+
+
+/* Detectar si se a cargado nuestro contexco en el canvas, iniciamos las funciones necesarias para jugar o se le manda msj de error segun sea el caso */
+window.onload = function(){
+  canvas = document.getElementById("pantalla");
+  if (canvas && canvas.getContext){
+    ctx = canvas.getContext("2d");
+    if(ctx){
+      teclado();
+      pintaPalabra();
+      horca(errores);
+      canvas.addEventListener("click", selecciona, false);
+    } else {
+      alert ("Error al cargar el contexto!");
+    }
+  }
+}
+
+
+
