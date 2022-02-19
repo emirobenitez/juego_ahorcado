@@ -1,7 +1,7 @@
 /* --------------------------------------------- */
 // AREA DE VARIABLES
 /* --------------------------------------------- */
-var ctx;
+var ctrtecla;
 var letra = '';
 var palabra = 'AGUACATE';
 var letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
@@ -15,9 +15,28 @@ var lon = 35;
 var margen = 20;
 var pistaText = "";
 
+var emoticon = ['&#128528;', '&#128533;', '&#128534;', '&#128563;', '&#128543;', '&#128531;', '&#128561;', '&#128549;', '&#128560;', '&#128557;'  ]
+var emoticons ;
+// var textEmoticons = 'Hola como estas?';
+
+var textEmois = [ '',
+                  '! Oh te equivocastes !', 
+                  '! Has fallado nueva mente !', 
+                  'No puede ser, !has fallado otravez!', 
+                  '! Concentrate.. ¡', 
+                  '! Concentrate.. ¡, No te rindas',
+                  '! Concentrate.. ¡, calmate y piensa',
+                  '! Empieza a preocuparte ...¡',
+                  'Ya casi pierdes !!',
+                  'No puede ser, !perdisteees!'
+                  ];
+
+//console.log(textEmoticons[0]);
 var intentos = 0;
 var gano = false;
 var perdio = false;
+
+
 
 /* --------------------------------------------- */
 /* Arreglos */
@@ -42,7 +61,8 @@ var errores = 0;
 /* --------------------------------------------- */
 
 var btnIniciaJugar = document.querySelector('#iniciar-juego');
-
+var emoticons = document.querySelector("#emoticons");
+var textEmoticons = document.querySelector("#textEmoticons");
 
 btnIniciaJugar.addEventListener("click",function(event){
    event.preventDefault();
@@ -77,29 +97,29 @@ function Letra(x, y, ancho, alto, letra){
 
 /* Dibujar Teclas*/
 function dibujaTecla(){
-  ctx.fillStyle = colorTecla;
-  ctx.strokeStyle = colorMargen;
-  ctx.fillRect(this.x, this.y, this.ancho, this.alto);
-  ctx.strokeRect(this.x, this.y, this.ancho, this.alto);
+  ctrtecla.fillStyle = colorTecla;
+  ctrtecla.strokeStyle = colorMargen;
+  ctrtecla.fillRect(this.x, this.y, this.ancho, this.alto);
+  ctrtecla.strokeRect(this.x, this.y, this.ancho, this.alto);
 
-  ctx.fillStyle = "white";
-  ctx.font = "bold 20px courier";
-  ctx.fillText(this.letra, this.x+this.ancho/2-5, this.y+this.alto/2+5);
+  ctrtecla.fillStyle = "white";
+  ctrtecla.font = "bold 20px courier";
+  ctrtecla.fillText(this.letra, this.x+this.ancho/2-5, this.y+this.alto/2+5);
 }
 
 /* Dibua la letra y su caja */
 function dibujaLetraLetra(){
   var w = this.ancho;
   var h = this.alto;
-  ctx.fillStyle = "black";
-  ctx.font = "bold 40px Courier";
-  ctx.fillText(this.letra, this.x+w/2-12, this.y+h/2+14);
+  ctrtecla.fillStyle = "black";
+  ctrtecla.font = "bold 40px Courier";
+  ctrtecla.fillText(this.letra, this.x+w/2-12, this.y+h/2+14);
 }
 function dibujaCajaLetra(){
-  ctx.fillStyle = "white";
-  ctx.strokeStyle = "black";
-  ctx.fillRect(this.x, this.y, this.ancho, this.alto);
-  ctx.strokeRect(this.x, this.y, this.ancho, this.alto);
+  ctrtecla.fillStyle = "white";
+  ctrtecla.strokeStyle = "black";
+  ctrtecla.fillRect(this.x, this.y, this.ancho, this.alto);
+  ctrtecla.strokeRect(this.x, this.y, this.ancho, this.alto);
 }
 
 
@@ -158,31 +178,46 @@ function pintaPalabra(){
 function horca(errores){
   var imagen = new Image();
   imagen.src = "images/ahorcado"+errores+".png";
-  //imagen.src = "/images/0+errores+.png";
+  
   imagen.onload = function(){
-    ctx.drawImage(imagen, 390, 0, 230, 230);
+    ctrtecla.drawImage(imagen, 390, 0, 230, 230);
   }
 //console.log(horca(errores));
 
 
   var intentos = document.querySelector("#intentos");
-  intentos.innerHTML = errores + ' / 9';
+  intentos.innerHTML = errores + ' de 9';
+  //console.log(errores);
+  
 
-//document.getElementById('intentos').style.color = "#FF0000"
-/*
-function estilosIntentos (){
-  var stylEintentos = document.getElementById("intentos")
-  stylEintentos.style.color = "#FF0000";
-  stylEintentos.style.font.size = "50px";
+
+function estilosEmoticons (){
+  var styleEmoticons = document.getElementById("emoticons");
+  styleEmoticons.style.color = "#FF0000";
+  styleEmoticons.style.font.size = "150px";
+  emoticons.innerHTML = emoticon[errores] ;
 }
-estilosIntentos();
-*/
+estilosEmoticons();
+
+
+
+
+function textIcon(){
+  var styleEmoticons = document.getElementById("textEmoticons");
+  styleEmoticons.style.color = "#FF0000";
+  styleEmoticons.style.font.size = "150px";
+  textEmoticons.innerHTML = textEmois[errores] ;
+}
+
+console.log(textIcon() );
+
+
   /*************************************************
   // Imagen 2 mas pequeña a un lado de la horca //
   var imagen = new Image();
   imagen.src = "imagenes/ahorcado"+errores+".png";
   imagen.onload = function(){
-    ctx.drawImage(imagen, 620, 0, 100, 100);
+    ctrtecla.drawImage(imagen, 620, 0, 100, 100);
   }
   *************************************************/
 }
@@ -226,7 +261,7 @@ function selecciona(e){
       if (errores === 9) gameOver(errores);
     }
     /* Borra la tecla que se a presionado */
-    ctx.clearRect(tecla.x - 1, tecla.y - 1, tecla.ancho + 2, tecla.alto + 2);
+    ctrtecla.clearRect(tecla.x - 1, tecla.y - 1, tecla.ancho + 2, tecla.alto + 2);
     tecla.x - 1;
     /* checa si se gano y manda a la funcion gameover */
     if (aciertos == palabra.length) gameOver(errores);
@@ -235,19 +270,19 @@ function selecciona(e){
 
 /* Borramos las teclas y la palabra con sus cajas y mandamos msj segun el caso si se gano o se perdio */
 function gameOver(errores){
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "black";
+  ctrtecla.clearRect(0, 0, canvas.width, canvas.height);
+  ctrtecla.fillStyle = "black";
 
-  ctx.font = "bold 50px Courier";
+  ctrtecla.font = "bold 50px Courier";
   if (errores < 5){
-    ctx.fillText("Muy bien, la palabra es: ", 110, 280);
+    ctrtecla.fillText("Muy bien, la palabra es: ", 110, 280);
   } else {
-    ctx.fillText("Lo sentimos, la palabra era: ", 110, 280);
+    ctrtecla.fillText("Lo sentimos, la palabra era: ", 110, 280);
   }
 
-  ctx.font = "bold 80px Courier";
+  ctrtecla.font = "bold 80px Courier";
   lon = (canvas.width - (palabra.length*48))/2;
-  ctx.fillText(palabra, lon, 380);
+  ctrtecla.fillText(palabra, lon, 380);
   horca(errores);
 }
 
@@ -257,8 +292,8 @@ function gameOver(errores){
 window.onload = function(){
   canvas = document.getElementById("pantalla");
   if (canvas && canvas.getContext){
-    ctx = canvas.getContext("2d");
-    if(ctx){
+    ctrtecla = canvas.getContext("2d");
+    if(ctrtecla){
       teclado();
       pintaPalabra();
       horca(errores);

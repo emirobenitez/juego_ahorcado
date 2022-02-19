@@ -1,28 +1,46 @@
 
-body{
-  width: 800px;
-  margin: 0 auto;
+html {
+  background-color:black ;
 }
+body{
+  width: 940px;
+  height: auto;
+  margin: 30px;
+  background-color:lightblue ;
+  border: 8px solid #000000;
+  padding: 0;
+  margin: 0;
+
+  /* border: groove 8px gold; */
+  /* background-color: azure; */
+  /* background: lightgreen; */
+ 
+}
+
+body > div{
+  background-color:lightblue ;
+  margin: auto;
+}
+
 h1{
   text-align: center;
 }
 #pantalla{
-  border: groove 8px gold;
-  background: lightgreen;
+  background-color:lightblue ;
 }
 #iniciar-juego{
-  background-color: red;
+  background-color:mediumturquoise;
   color: white;
   font-size: 20px;
   text-align: center;
   font-weight: bolder;
   padding: 3px;
-  border: solid 2px black;
+  /* border: solid 2px black; */
 }
-#iniciar-juego:hover{ /* Estilo que se activa al pasar el puntero sobre el boton */
-  background-color: lightcoral;
+#iniciar-juego:hover{ 
+  background-color:mediumspringgreen;
   font-size: 22px;
-  border: groove 4px red;
+  border: groove 4px rgb(0, 255, 119);
 }
 
 /* ---------------------------- */
@@ -30,6 +48,7 @@ h1{
   padding: 15px;
   width: 30vw;
   margin: auto;
+  font-size: 45px;
 
 }
 
@@ -111,11 +130,42 @@ th{
  input{
   margin: 20px 0px;
 }
+
+
+/* .container{
+  background-color: azure;
+  background: lightgreen;
+  margin: auto;
+  padding: 0;
+  text-align: center;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+} */
+
+
+
 small#intentos {
   font-size: 29px;
   color: #FF0000;
 }
-#h3-intentos {
-  font-size: 29px;
 
+#emoticons {
+  font-size: 50px;
+
+}
+#textEmoticons{
+  font-size: 30px;
+  color: #000000;
+}
+
+
+.flex-container {
+  display: flex;
+  /* background-color: DodgerBlue; */
+}
+.flex-container > div {
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
 }

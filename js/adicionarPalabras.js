@@ -31,7 +31,7 @@ function capturarDatosPalabra(form){
     }
     return palabra;
 }
-console.log(palabra)
+
 function construirTr(palabra){
 
     var palabraTr = document.createElement("tr");
