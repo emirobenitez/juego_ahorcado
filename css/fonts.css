@@ -1,0 +1,28 @@
+/* @font-face */ 
+
+/* ----------------------- */
+/* Inicio Fuentes & Iconos */
+/* ----------------------- */
+
+
+@font-face {
+    font-family: "belligerent-webfont";
+    src: url("../fonts/belligerent-webfont/belligerent-webfont.eot");
+    src: url("../fonts/belligerent-webfont/belligerent-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/belligerent-webfont/belligerent-webfont.woff") format("woff"),
+         url("../fonts/belligerent-webfont/belligerent-webfont.ttf") format("truetype"),
+         url("../fonts/belligerent-webfont/belligerent-webfont.svg#belligerent-webfont") format("svg");
+         font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: "Roboto-Light";
+    src: url("../fonts/Roboto/Roboto-Light.eot");
+    src: url("../fonts/Roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/Roboto/Roboto-Light.woff") format("woff"),
+         url("../fonts/Roboto/Roboto-Light.ttf") format("truetype"),
+         url("../fonts/Roboto/Roboto-Light.svg#Roboto") format("svg");
+         font-weight: normal;
+    font-style: normal;
+}

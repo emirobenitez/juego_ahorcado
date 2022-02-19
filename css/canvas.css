@@ -1,0 +1,31 @@
+
+
+
+.ahorcado-img {
+    height: 400px;
+}
+small#intentos {
+    font-size: 30px;
+    color: #FF0000;
+  }
+  
+  #emoticons {
+    font-size: 50px;
+  
+  }
+  #textEmoticons{
+    font-size: 27px;
+    color: #000000;
+  }
+  
+  
+  .flex-container {
+    display: flex;
+    /* background-color: DodgerBlue; */
+  }
+  .flex-container > div {
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+  }
+  

@@ -1,54 +1,60 @@
 
 html {
-  background-color:black ;
+  background-color: azure;
+  font-family:'Roboto-Light';
 }
 body{
-  width: 940px;
+  background: lightgreen;
+  border: 8px solid #000000;
+  border: groove 8px gold; 
   height: auto;
   margin: 30px;
-  background-color:lightblue ;
-  border: 8px solid #000000;
+  width: 940px;
   padding: 0;
   margin: 0;
-
-  /* border: groove 8px gold; */
-  /* background-color: azure; */
-  /* background: lightgreen; */
+  /* font-family:'DancingScript-Bold'; */
+  font-size:5vw;
  
-}
-
-body > div{
-  background-color:lightblue ;
-  margin: auto;
-}
-
-h1{
-  text-align: center;
 }
 #pantalla{
   background-color:lightblue ;
+  background: lightgreen;
+  /* font-family:'DancingScript-Bold'; */
+  font-size:5vw;
 }
+
+
+h1{
+  text-align: center;
+  
+}
+
 #iniciar-juego{
   background-color:mediumturquoise;
+  background-color: black;
+  border: solid 2px black;
   color: white;
   font-size: 20px;
   text-align: center;
   font-weight: bolder;
-  padding: 3px;
-  /* border: solid 2px black; */
+  margin-top: 30px;
+  padding: 13px;
+  font-family:'Roboto-Light';
 }
 #iniciar-juego:hover{ 
   background-color:mediumspringgreen;
   font-size: 22px;
+  font-family:'Roboto-Light';
   border: groove 4px rgb(0, 255, 119);
 }
 
 /* ---------------------------- */
 .titulo {
-  padding: 15px;
+  padding: 0;
   width: 30vw;
   margin: auto;
-  font-size: 45px;
+  font-size: 7vw;
+  font-family:'belligerent-webfont';
 
 }
 
@@ -56,6 +62,7 @@ h1{
   border: 0;
   color: white;
   font-weight: bold;
+  font-family:'Roboto-Light';
   background-color: blue;
   padding: 10px;
   margin-top: 10px;
@@ -75,16 +82,6 @@ h1{
 }
 
 
-
-.ahorcado-img {
-  height: 400px;
-}
-/*
-button {
-  margin-top: 5px;
-  margin-left: 5px;
-}
-*/
 #letras{
   margin-left: 10px;
   margin-right: 10px;
@@ -132,40 +129,5 @@ th{
 }
 
 
-/* .container{
-  background-color: azure;
-  background: lightgreen;
-  margin: auto;
-  padding: 0;
-  text-align: center;
-  display: inline-block;
-  display: flex;
-  align-items: center;
-} */
 
 
-
-small#intentos {
-  font-size: 29px;
-  color: #FF0000;
-}
-
-#emoticons {
-  font-size: 50px;
-
-}
-#textEmoticons{
-  font-size: 30px;
-  color: #000000;
-}
-
-
-.flex-container {
-  display: flex;
-  /* background-color: DodgerBlue; */
-}
-.flex-container > div {
-  margin: 10px;
-  padding: 20px;
-  font-size: 30px;
-}

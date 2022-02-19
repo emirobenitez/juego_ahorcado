@@ -15,7 +15,7 @@ var lon = 35;
 var margen = 20;
 var pistaText = "";
 
-var emoticon = ['&#128528;', '&#128533;', '&#128534;', '&#128563;', '&#128543;', '&#128531;', '&#128561;', '&#128549;', '&#128560;', '&#128557;'  ]
+var emoticon = ['', '&#128528;', '&#128533;', '&#128534;', '&#128563;', '&#128543;', '&#128531;', '&#128561;', '&#128549;', '&#128560;', '&#128557;'  ]
 var emoticons ;
 // var textEmoticons = 'Hola como estas?';
 
@@ -50,14 +50,7 @@ var aciertos = 0;
 var errores = 0;
 
 /* --------------------------------------------- */
-
-
-//console.log('boton btnInicio:'+ btnInicio);
-
-//var btnLetras = document.querySelector('#letras');
-//console.log('boton letras:'+ btnLetras);
-
-//const div = document.createElement("div");
+/* Inicializando Objetos HTML
 /* --------------------------------------------- */
 
 var btnIniciaJugar = document.querySelector('#iniciar-juego');
@@ -174,13 +167,15 @@ function pintaPalabra(){
       x += lon + margen;
     }
 }
+
 /* dibujar cadalzo y partes del pj segun sea el caso */
 function horca(errores){
   var imagen = new Image();
   imagen.src = "images/ahorcado"+errores+".png";
   
   imagen.onload = function(){
-    ctrtecla.drawImage(imagen, 390, 0, 230, 230);
+    // ctrtecla.drawImage(imagen, 390, 0, 230, 230);
+    ctrtecla.drawImage(imagen, 350, 0, 200, 220);
   }
 //console.log(horca(errores));
 
@@ -194,7 +189,7 @@ function horca(errores){
 function estilosEmoticons (){
   var styleEmoticons = document.getElementById("emoticons");
   styleEmoticons.style.color = "#FF0000";
-  styleEmoticons.style.font.size = "150px";
+  // styleEmoticons.style.font.size = "120px";
   emoticons.innerHTML = emoticon[errores] ;
 }
 estilosEmoticons();
@@ -205,7 +200,7 @@ estilosEmoticons();
 function textIcon(){
   var styleEmoticons = document.getElementById("textEmoticons");
   styleEmoticons.style.color = "#FF0000";
-  styleEmoticons.style.font.size = "150px";
+  // styleEmoticons.style.font.size = "120px";
   textEmoticons.innerHTML = textEmois[errores] ;
 }
 
@@ -273,11 +268,11 @@ function gameOver(errores){
   ctrtecla.clearRect(0, 0, canvas.width, canvas.height);
   ctrtecla.fillStyle = "black";
 
-  ctrtecla.font = "bold 50px Courier";
+  ctrtecla.font = "bold 40px Roboto-Light";
   if (errores < 5){
     ctrtecla.fillText("Muy bien, la palabra es: ", 110, 280);
   } else {
-    ctrtecla.fillText("Lo sentimos, la palabra era: ", 110, 280);
+    ctrtecla.fillText("Lo sentimos, Perdístes!!, la palabra era: ", 110, 280);
   }
 
   ctrtecla.font = "bold 80px Courier";
