@@ -1,56 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Ahorcado</title>
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/canvas.css">
+
+    <link rel="stylesheet" href="css/fonts.css">
+    
   </head>
   <body>
+    <div>
     <div style="text-align:center; margin: 50px 0px;">
       <h1 class="titulo">Ahorcado</h1>
-      <button class="btn" id="iniciar-juego">INICIAR JUEGO</button>
+      <button class="btn" id="iniciar-juego" onclick="javascript:window.location.reload();"> INICIAR JUEGO </button>
+      
     </div>
+    
+    <div class="flex-container">
+        
+      <div class="intentosFallidos">
 
-    <div style="text-align:center">
-        <ul id="mensajes-errores"></ul>
-        <form id="form-adicionar">
-            <div class="grupo">
-                <label for="nombre">Agregar Palabras:</label>
-                <input class="text-input" type="text" id="input_nueva_palabra" placeholder="Escriba una nueva palabra" pattern="[A-Z]+" onkeypress="return  soloMayusculas(event);" style="text-transform: uppercase;" >
-            </div>
-        </form>
+        <h3 id="h3-intentos" >Intentos fallidos: <small id="intentos"> 0 de 9</small> </h3>
+        
+      </div>
+      <div>
+        <h3 id="emoticons" > </h3>
 
-        <button class="btn" id="adcionar-nueva-palabra">AGREGAR PALABRA</button>
+      </div>
+      <div>
+
+        <strong id="textEmoticons" >Listo vamos a jugar?</strong> 
+
+      </div>
+     
     </div>
+  </div>
+  <div>
+    <canvas id="pantalla" width="940px" height="450px"></canvas>
+  </div>
 
-    <!-- ------------------------------- -->
-     <div style="text-align:justifer;">
-        <h2>Palabras Ingresadas</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Palabras </th>
-                </tr>
-            </thead>
-            <tbody id="tabla-palabras">
-                <tr class="palabra">
-                    <td class="info-nombre">AGUACATE</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 
-    <!-- ------------------------------- -->
-    <div style="text-align:center;">
-      <canvas id="ahorcado" height="800px" width="1200px"></canvas>
-    </div>
-
-    <!-- ------------------------------- -->
-    <script type="text/javascript" src="js/canvas.js"></script>
+    <!-- Enlaces a javaScript -->
+    <!-- <script type="text/javascript" src="js/canvas.js"></script> -->
     <script type="text/javascript" src="js/ahorcado.js"></script>
-    <script type="text/javascript" src="js/adicionarPalabras.js"></script>
-    <script type="text/javascript" src="js/validarMayusculas.js"></script>
+
+    
   </body>
 </html>

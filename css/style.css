@@ -1,35 +1,39 @@
 
 html {
   background-color: azure;
-  font-family:'Roboto-Light';
+  font-family:"DancingScript-Regular","Ubuntu-Regular", "Open Sans", sans;
 }
 body{
   background: lightgreen;
   border: 8px solid #000000;
   border: groove 8px gold; 
+  font-family:"Open Sans", sans;
   height: auto;
   margin: 30px;
   width: 940px;
   padding: 0;
   margin: 0;
-  /* font-family:'DancingScript-Bold'; */
-  font-size:5vw;
+  font-family:"DancingScript-Regular","Ubuntu-Regular", "Open Sans", sans;
  
 }
 #pantalla{
   background-color:lightblue ;
   background: lightgreen;
-  /* font-family:'DancingScript-Bold'; */
-  font-size:5vw;
+  font-family:"DancingScript-Regular","Ubuntu-Regular", "Open Sans", sans;
+  font-size:5px;
 }
 
 
 h1{
   text-align: center;
-  
+  font-family:"DancingScript-Regular","Ubuntu-Regular", "Open Sans", sans;
 }
-
-#iniciar-juego{
+label {
+  font-size: 33px;
+  font-family:"DancingScript-Regular","Ubuntu-Regular", "Open Sans", sans;
+  color: red;
+}
+#iniciar-juego, .btn{
   background-color:mediumturquoise;
   background-color: black;
   border: solid 2px black;
@@ -38,26 +42,33 @@ h1{
   text-align: center;
   font-weight: bolder;
   margin-top: 30px;
+  margin-bottom: 30px;
   padding: 13px;
-  font-family:'Roboto-Light';
+  font-family:"DancingScript-Regular","Ubuntu-Regular", "Open Sans", sans;
 }
-#iniciar-juego:hover{ 
+#iniciar-juego:hover, .btn:hover{ 
   background-color:mediumspringgreen;
   font-size: 22px;
   font-family:'Roboto-Light';
+  font-family:"Open Sans", sans;
   border: groove 4px rgb(0, 255, 119);
 }
 
 /* ---------------------------- */
 .titulo {
   padding: 0;
-  width: 30vw;
   margin: auto;
-  font-size: 7vw;
+  font-size: 77px;
   font-family:'belligerent-webfont';
 
 }
 
+#h3-intentos{
+  font-size: 27px;
+  font-family:"DancingScript-Regular","Ubuntu-Regular", "Open Sans", sans;
+}
+
+/*
 .btn {
   border: 0;
   color: white;
@@ -67,14 +78,16 @@ h1{
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
-  border-radius: 0.5em;
+  border-radius: 0.5px;
 }
+*/
 
 .text-input {
-  border-radius: 0.5em;
+  border-radius: 0.5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  font-family:"DancingScript-Regular","Ubuntu-Regular", "Open Sans", sans;
   display: block;
-  padding: 0.5em;
+  padding: 0.5px;
   width: 30%;
   height: 50px;
   margin-left: auto;
@@ -99,24 +112,27 @@ button#letras{
 /*    Estilos de la tabla       */
 /* ---------------------------- */
 
-section h2{
-  font-size: 3em;
+h2{
+  font-size: 33px;
+  font-family:"DancingScript-Regular","Ubuntu-Regular", "Open Sans", sans;
   display: block;
-  padding-bottom: .5em;
+  padding-bottom: .5px;
   border-bottom: 1px solid #ccc;
-  margin-bottom: .5em;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 table{
-  width: 100%;
-  margin-bottom : .5em;
-    table-layout: fixed;
-
+  background-color: #cccccc;
+  margin-bottom : .5px;
+  table-layout: fixed;
+  width: 50%;
+  font-family:"DancingScript-Regular","Ubuntu-Regular", "Open Sans", sans;
 }
 
 td, th {
-  padding: .7em;
+  padding: .7px;
   margin: 0;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   text-align: center;
 }
 
@@ -126,6 +142,7 @@ th{
 }
  input{
   margin: 20px 0px;
+  font-family:"Open Sans", sans;
 }
 
 

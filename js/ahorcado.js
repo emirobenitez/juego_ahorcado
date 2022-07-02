@@ -2,8 +2,12 @@
 // AREA DE VARIABLES
 /* --------------------------------------------- */
 var ctrtecla;
-var letra = '';
-var palabra = 'AGUACATE';
+var canvas;
+//var letra = '';
+
+
+//var palabra = 'AGUACATE';
+
 var letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 var colorTecla = "#585858";
 var colorMargen = "red";
@@ -61,6 +65,32 @@ btnIniciaJugar.addEventListener("click",function(event){
    event.preventDefault();
 
 });
+
+
+/* --------------------------------------------- */
+/*      Palabras                                 */
+/* --------------------------------------------- */
+
+//palabras_array = ['AGUACATE', 'MARACUYA', 'BANANO', 'CEBOLLA', 'GRANADILLA'  ];
+// palabras_array = [];
+
+palabras_array.push("LEON");
+palabras_array.push("CABALLO");
+palabras_array.push("PERRO");
+palabras_array.push("GATO");
+palabras_array.push("LAGARTIJA");
+palabras_array.push("RINOCERONTE");
+palabras_array.push("TIBURON");
+palabras_array.push("CARACOL");
+palabras_array.push("ALACRAN");
+palabras_array.push("ARAÑA");
+palabras_array.push("CHAPULIN");
+palabras_array.push("AVESTRUZ");
+palabras_array.push("OCELOTE");
+palabras_array.push("MUSARAÑA");
+palabras_array.push("AGUILA");
+
+
 /* --------------------------------------------- */
 /* Objetos */
 /* --------------------------------------------- */
@@ -105,7 +135,7 @@ function dibujaLetraLetra(){
   var w = this.ancho;
   var h = this.alto;
   ctrtecla.fillStyle = "black";
-  ctrtecla.font = "bold 40px Courier";
+  ctrtecla.font = "bold 40px Roboto-Light";
   ctrtecla.fillText(this.letra, this.x+w/2-12, this.y+h/2+14);
 }
 function dibujaCajaLetra(){
@@ -148,10 +178,11 @@ function teclado(){
 
 /* aqui obtenemos nuestra palabra aleatoriamente y la dividimos en letras */
 function pintaPalabra(){
-  //var p = Math.floor(Math.random()*palabras_array.length);
-  //palabra = palabras_array[p];
+  var p = Math.floor(Math.random()*palabras_array.length);
+  palabra = palabras_array[p];
 
   //pistaFunction(palabra);
+  
     var w = canvas.width;
     var len = palabra.length;
     var ren = 0;
@@ -166,6 +197,7 @@ function pintaPalabra(){
       letras_array.push(miLetra);
       x += lon + margen;
     }
+
 }
 
 /* dibujar cadalzo y partes del pj segun sea el caso */
@@ -177,44 +209,29 @@ function horca(errores){
     // ctrtecla.drawImage(imagen, 390, 0, 230, 230);
     ctrtecla.drawImage(imagen, 350, 0, 200, 220);
   }
-//console.log(horca(errores));
+  //console.log(horca(errores));
 
 
   var intentos = document.querySelector("#intentos");
   intentos.innerHTML = errores + ' de 9';
   //console.log(errores);
   
-
-
-function estilosEmoticons (){
-  var styleEmoticons = document.getElementById("emoticons");
-  styleEmoticons.style.color = "#FF0000";
-  // styleEmoticons.style.font.size = "120px";
-  emoticons.innerHTML = emoticon[errores] ;
-}
-estilosEmoticons();
-
-
-
-
-function textIcon(){
-  var styleEmoticons = document.getElementById("textEmoticons");
-  styleEmoticons.style.color = "#FF0000";
-  // styleEmoticons.style.font.size = "120px";
-  textEmoticons.innerHTML = textEmois[errores] ;
-}
-
-console.log(textIcon() );
-
-
-  /*************************************************
-  // Imagen 2 mas pequeña a un lado de la horca //
-  var imagen = new Image();
-  imagen.src = "imagenes/ahorcado"+errores+".png";
-  imagen.onload = function(){
-    ctrtecla.drawImage(imagen, 620, 0, 100, 100);
+  function estilosEmoticons (){
+    var styleEmoticons = document.getElementById("emoticons");
+    styleEmoticons.style.color = "#FF0000";
+    // styleEmoticons.style.font.size = "120px";
+    emoticons.innerHTML = emoticon[errores] ;
   }
-  *************************************************/
+  estilosEmoticons();
+
+  function textIcon(){
+    var styleEmoticons = document.getElementById("textEmoticons");
+    styleEmoticons.style.color = "#FF0000";
+    // styleEmoticons.style.font.size = "120px";
+    textEmoticons.innerHTML = textEmois[errores] ;
+  }
+  textIcon();
+
 }
 /* ajustar coordenadas */
 function ajusta(xx, yy){
@@ -275,12 +292,11 @@ function gameOver(errores){
     ctrtecla.fillText("Lo sentimos, Perdístes!!, la palabra era: ", 110, 280);
   }
 
-  ctrtecla.font = "bold 80px Courier";
+  ctrtecla.font = "bold 80px Roboto-Light";
   lon = (canvas.width - (palabra.length*48))/2;
   ctrtecla.fillText(palabra, lon, 380);
   horca(errores);
 }
-
 
 
 /* Detectar si se a cargado nuestro contexco en el canvas, iniciamos las funciones necesarias para jugar o se le manda msj de error segun sea el caso */
@@ -298,6 +314,3 @@ window.onload = function(){
     }
   }
 }
-
-
-

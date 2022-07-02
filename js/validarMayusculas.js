@@ -1,8 +1,9 @@
 // Dar foco a un campo de texto  inmediatamente se carga
+/*
 window.onload = function() {
     document.getElementById("input_nueva_palabra").focus();
   };
-
+*/
   // funcion para validar solo minusculas, ni especiales, ni numeros
   function  soloMayusculas(e)
   {
